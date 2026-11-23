@@ -130,7 +130,7 @@ as $$
     select distinct lower(trim(term)) as term
     from unnest(coalesce(search_terms, '{}')) as term
     where char_length(trim(term)) >= 2
-    limit 20
+    limit 8
   ),
   scored as (
     select

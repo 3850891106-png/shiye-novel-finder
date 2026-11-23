@@ -676,12 +676,12 @@ function extractSearchTerms(rawQuery) {
 
   const compact = normalizeText(rawQuery);
   for (let size = 3; size >= 2; size -= 1) {
-    for (let index = 0; index <= compact.length - size && terms.length < 20; index += 1) {
+    for (let index = 0; index <= compact.length - size && terms.length < 8; index += 1) {
       const gram = compact.slice(index, index + size);
       if (/^[\u3400-\u9fff]{2,3}$/.test(gram)) add(gram);
     }
   }
-  return terms.slice(0, 20);
+  return terms.slice(0, 8);
 }
 
 function mergeBooks(primary, fallback) {
