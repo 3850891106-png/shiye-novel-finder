@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="拾页——用剧情、角色、台词或封面碎片，找回那本忘了名字的小说。"
+    />
+    <title>拾页 · 忘了书名，也别弄丢那本书</title>
+    <link rel="stylesheet" href="./styles.css?v=2" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" href="#" data-home>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 42 42" fill="none">
+            <path d="M8 8.5c6.7-.9 11.4.8 13 4.3v21c-2.8-2.8-7-3.8-13-3.1v-22.2Z" />
+            <path d="M34 8.5c-6.7-.9-11.4.8-13 4.3v21c2.8-2.8 7-3.8 13-3.1v-22.2Z" />
+            <path d="M13.5 15.2c2.2 0 3.8.5 4.8 1.3M13.5 20c2.2 0 3.8.5 4.8 1.3M28.5 15.2c-2.2 0-3.8.5-4.8 1.3M28.5 20c-2.2 0-3.8.5-4.8 1.3" />
+          </svg>
+        </span>
+        <span class="brand-type">
+          <strong>拾页</strong>
+          <small>SHIYE</small>
+        </span>
+        <span class="cloud-status" id="cloudStatus">
+          <i></i>
+          正在连接书库
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a class="active" href="#" data-home>找一本旧书</a>
+        <a href="#community" data-community>一起找书</a>
+        <a href="#shelf" data-shelf>我的寻书单 <span class="nav-count" id="shelfCount">0</span></a>
+      </nav>
+
+      <button class="header-cta" type="button" data-open-post>
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 4v12M4 10h12" />
+        </svg>
+        发寻书帖
+      </button>
+    </header>
+
+    <main id="main">
+      <div id="homeView" class="view">
+        <section class="hero">
+          <div class="hero-paper paper-one" aria-hidden="true"></div>
+          <div class="hero-paper paper-two" aria-hidden="true"></div>
+          <div class="hero-grid" aria-hidden="true"></div>
+
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow"><span></span> 用碎片，把故事找回来</p>
+              <h1>忘了书名，<br /><em>也别弄丢那本书。</em></h1>
+              <p class="hero-lede">
+                告诉我们你还记得什么。哪怕只剩一个角色、一句台词、<br class="desktop-break" />
+                一抹封面颜色，也有人和算法陪你一起找。
+              </p>
+            </div>
+
+            <div class="memory-seal" aria-hidden="true">
+              <span>故事有痕</span>
+              <strong>拾</strong>
+              <span>终会重逢</span>
+            </div>
+          </div>
+
+          <form class="search-card" id="searchForm">
+            <div class="search-top">
+              <span class="search-label">你还记得什么？</span>
+              <div class="mode-switch" role="tablist" aria-label="回忆类型">
+                <button class="mode active" type="button" data-mode="plot">剧情记忆</button>
+                <button class="mode" type="button" data-mode="title">书名模样</button>
+                <button class="mode" type="button" data-mode="cover">封面记忆</button>
+                <button class="mode" type="button" data-mode="quote">台词细节</button>
+              </div>
+            </div>
+
+            <label class="search-box" for="searchInput">
+              <textarea
+                id="searchInput"
+                rows="3"
+                maxlength="500"
+                placeholder="比如：女主穿进书里，男主是脾气很差的王爷，女主要完成任务才能回去……"
+              ></textarea>
+              <span class="char-count" id="charCount">0 / 500</span>
+            </label>
+
+            <div class="clue-crowd" id="clueCrowd" aria-label="可添加的回忆标签">
+              <button type="button" class="clue" data-clue="古言">古言</button>
+              <button type="button" class="clue" data-clue="穿书">穿书</button>
+              <button type="button" class="clue" data-clue="破镜重圆">破镜重圆</button>
+              <button type="button" class="clue" data-clue="校园">校园</button>
+              <button type="button" class="clue" data-clue="重生">重生</button>
+              <button type="button" class="clue" data-clue="改名">好像改过名</button>
+              <button type="button" class="clue" data-clue="2021">2021年前后</button>
+            </div>
+
+            <div class="search-actions">
+              <button class="cover-upload" type="button" data-open-cover>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 7.5h3l1.5-2h7l1.5 2h3v11H4v-11Z" />
+                  <circle cx="12" cy="13" r="3.5" />
+                </svg>
+                按封面找
+              </button>
+              <button class="primary-button search-submit" type="submit">
+                开始找书
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="quick-finds">
+            <span>不知道怎么写？试试：</span>
+            <button type="button" data-sample="游戏头盔 穿越异界 成为骑士 村长 白银怪">
+              游戏头盔穿越异界
+            </button>
+            <button type="button" data-sample="以前叫箭皇 后来改名 技术宅 拯救世界 领主">
+              以前叫《箭皇》
+            </button>
+            <button type="button" data-sample="穿越成秦二世 项羽 韩信 大秦 统一六国">
+              穿越成秦二世
+            </button>
+          </div>
+        </section>
+
+        <section class="proof-strip" aria-label="寻书数据">
+          <div class="proof-item">
+            <strong id="novelStatCount">4,679<span>本</span></strong>
+            <p>当前穿越小说索引</p>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <strong>4<span>类</span></strong>
+            <p>剧情、书名、封面、台词线索</p>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <strong>2<span>种</span></strong>
+            <p>智能检索与读者互助路径</p>
+          </div>
+          <p class="prototype-note">书目索引可按书名、人物、章节与曾用名检索</p>
+        </section>
+
+        <section class="recent-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> 最近被找回的故事</p>
+              <h2>有些书，正被人重新想起。</h2>
+            </div>
+            <button class="text-button" type="button" data-scroll-results>
+              看看大家怎么找到的
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" />
+              </svg>
+            </button>
+          </div>
+          <div class="recovered-grid" id="recoveredGrid"></div>
+        </section>
+
+        <section class="community-section" id="community">
+          <div class="community-copy">
+            <p class="eyebrow light"><span></span> 一起找书</p>
+            <h2>一个人的模糊记忆，<br />可能正是另一个人读过的故事。</h2>
+            <p>
+              搜索没有结果时，把线索留在这里。读过的人可以对暗号、补细节，
+              让每一段被遗忘的故事都有机会被认领。
+            </p>
+            <div class="community-actions">
+              <button class="paper-button" type="button" data-open-post>
+                发布寻书帖
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" />
+                </svg>
+              </button>
+              <a href="#communityPosts">浏览正在寻找的故事</a>
+            </div>
+          </div>
+          <div class="community-card">
+            <div class="post-stamp">等待认领</div>
+            <p class="post-kicker">寻书帖 · 第 0381 号</p>
+            <h3>“女主每次睡着都会回到古代，醒来又回到病房……”</h3>
+            <div class="post-meta">
+              <span>古言 / 双时空 / 2018年前后</span>
+              <span>126 人看过</span>
+            </div>
+            <div class="post-replies">
+              <div class="tiny-avatar avatar-a">桃</div>
+              <div class="tiny-avatar avatar-b">竹</div>
+              <div class="tiny-avatar avatar-c">风</div>
+              <span>已有 3 位读者提供线索</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="community-feed" id="communityPosts">
+          <div class="feed-heading">
+            <div>
+              <p class="eyebrow"><span></span> 正在寻找</p>
+              <h2>也许你刚好读过。</h2>
+            </div>
+            <button class="text-button" type="button" data-open-post>我也要发帖 +</button>
+          </div>
+          <div class="feed-grid" id="feedGrid"></div>
+        </section>
+
+        <section class="how-section" id="howItWorks">
+          <div class="how-intro">
+            <p class="eyebrow"><span></span> 怎么找</p>
+            <h2>不需要记起全部，<br />只需要从一个碎片开始。</h2>
+          </div>
+          <div class="how-steps">
+            <article>
+              <span>01</span>
+              <h3>先写下最确定的事</h3>
+              <p>人物名、职业、地点、一句台词，甚至只记得“封面是蓝色的”。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>一起缩小范围</h3>
+              <p>系统按相似度排出候选书，并用剧情和角色证据告诉你为什么像。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>确认，再把它收好</h3>
+              <p>锁定正确作品后，保存现用书名、曾用名、阅读平台和正版入口。</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section id="resultsView" class="view results-view" hidden>
+        <button class="back-link" type="button" data-home>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M16 10H5M9.5 5.5 5 10l4.5 4.5" />
+          </svg>
+          重新描述
+        </button>
+
+        <div class="results-header">
+          <div>
+            <p class="eyebrow"><span></span> 记忆检索结果</p>
+            <h1>我们找到了一些<br /><em>很像的故事。</em></h1>
+          </div>
+          <div class="result-summary">
+            <p>你的回忆</p>
+            <blockquote id="queryEcho"></blockquote>
+            <div id="queryTags" class="query-tags"></div>
+          </div>
+        </div>
+
+        <div class="results-layout">
+          <div class="results-main">
+            <div class="result-toolbar">
+              <p id="resultCount">正在整理线索…</p>
+              <div>
+                <span>排序：</span>
+                <button type="button" class="sort-button active">相似度</button>
+                <button type="button" class="sort-button">年代</button>
+              </div>
+            </div>
+            <div class="result-list" id="resultList" aria-live="polite"></div>
+            <div class="empty-results" id="emptyResults" hidden>
+              <span class="empty-mark">?</span>
+              <h2>这次没找到很像的</h2>
+              <p>这不是故事的结尾。把线索发到寻书广场，让真正读过的人来认一认。</p>
+              <button class="primary-button" type="button" data-open-post>发布寻书帖</button>
+            </div>
+          </div>
+
+          <aside class="results-aside">
+            <div class="clue-board">
+              <div class="clue-board-head">
+                <span>回忆拼图</span>
+                <span id="clueScore">已识别 0 条</span>
+              </div>
+              <div class="clue-lines" id="clueLines"></div>
+              <div class="next-question" id="nextQuestion">
+                <span>还能想起一点点吗？</span>
+                <h3>故事发生在哪里？</h3>
+                <div class="question-options">
+                  <button type="button" data-refine="古代">古代</button>
+                  <button type="button" data-refine="现代">现代</button>
+                  <button type="button" data-refine="校园">校园</button>
+                  <button type="button" data-refine="记不清">记不清</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="human-help">
+              <span class="human-help-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <path d="M7 10.5c2.1-4 6.2-5.6 10.4-4.4 4.1 1.2 6.7 4.8 6.1 9.1-.4 3.2-2.6 5.5-5.7 6.4" />
+                  <path d="M17 23c-1.2 1.7-1.2 3.6 0 5.5 1.3-1.9 1.3-3.8 0-5.5Z" />
+                  <path d="M8.2 12c-1.5.3-2.7 1.2-3.5 2.7" />
+                </svg>
+              </span>
+              <div>
+                <h3>让读过的人帮你看一眼</h3>
+                <p>线索越具体，越容易遇到那个“我也看过”的人。</p>
+              </div>
+              <button type="button" data-open-post>去发帖</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="shelfView" class="view shelf-view" hidden>
+        <button class="back-link" type="button" data-home>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M16 10H5M9.5 5.5 5 10l4.5 4.5" />
+          </svg>
+          返回
+        </button>
+        <div class="results-header shelf-heading">
+          <div>
+            <p class="eyebrow"><span></span> 我的寻书单</p>
+            <h1>把「就是这本」<br /><em>好好收起来。</em></h1>
+          </div>
+          <div class="result-summary">
+            <p>已确认的旧书</p>
+            <strong id="shelfTitleCount">0 本</strong>
+            <div class="query-tags">
+              <span>现用书名</span>
+              <span>曾用名</span>
+              <span>正版入口</span>
+            </div>
+          </div>
+        </div>
+        <div class="shelf-grid" id="shelfGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="brand-mark small" aria-hidden="true">
+          <svg viewBox="0 0 42 42" fill="none">
+            <path d="M8 8.5c6.7-.9 11.4.8 13 4.3v21c-2.8-2.8-7-3.8-13-3.1v-22.2Z" />
+            <path d="M34 8.5c-6.7-.9-11.4.8-13 4.3v21c2.8-2.8 7-3.8 13-3.1v-22.2Z" />
+          </svg>
+        </span>
+        <div>
+          <strong>拾页</strong>
+          <p>忘了书名，也别弄丢那本书。</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#howItWorks">如何使用</a>
+        <a href="#community">寻书广场</a>
+        <a href="#" data-open-post>联系我们</a>
+      </div>
+      <p class="footer-note">
+        书目索引来源：香书小说公开页面 · 仅提供作品识别信息与来源链接
+      </p>
+    </footer>
+
+    <dialog class="post-dialog" id="postDialog">
+      <form id="postForm" method="dialog">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="关闭">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="m5 5 10 10M15 5 5 15" />
+          </svg>
+        </button>
+        <p class="eyebrow"><span></span> 发布寻书帖</p>
+        <h2>把你还记得的，<br />慢慢说给大家听。</h2>
+        <p class="dialog-intro">先写最确定的线索。发帖后会生成一张寻书卡，读过的人可以补充细节。</p>
+
+        <label>
+          <span>故事线索 <b>必填</b></span>
+          <textarea
+            name="clue"
+            rows="5"
+            required
+            maxlength="600"
+            placeholder="人物、剧情、年代、平台、封面……记得多少写多少"
+          ></textarea>
+        </label>
+
+        <div class="dialog-row">
+          <label>
+            <span>类型</span>
+            <select name="genre">
+              <option>古言</option>
+              <option>现言</option>
+              <option>校园</option>
+              <option>悬疑</option>
+              <option>仙侠</option>
+              <option>不确定</option>
+            </select>
+          </label>
+          <label>
+            <span>大概看过</span>
+            <select name="year">
+              <option>最近两年</option>
+              <option>2019—2022</option>
+              <option>2015—2018</option>
+              <option>更早</option>
+              <option>完全记不清</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>怎么称呼你 <i>选填</i></span>
+          <input name="name" maxlength="20" placeholder="一位想找回旧故事的读者" />
+        </label>
+
+        <button class="primary-button dialog-submit" type="submit">
+          发布到寻书广场
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" />
+          </svg>
+        </button>
+        <p class="dialog-privacy">请勿填写个人联系方式或敏感信息。</p>
+      </form>
+    </dialog>
+
+    <dialog class="cover-dialog" id="coverDialog">
+      <form method="dialog">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="关闭">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="m5 5 10 10M15 5 5 15" />
+          </svg>
+        </button>
+        <div class="cover-drop">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M8 35.5 35.5 8l4.5 4.5L12.5 40H8v-4.5Z" />
+            <path d="M30 13.5 34.5 18" />
+          </svg>
+          <h2>用记忆拼出封面</h2>
+          <p>原型暂不读取图片。请选择最接近的封面特征，我们会把它加入搜索线索。</p>
+        </div>
+        <div class="cover-options" id="coverOptions">
+          <button type="button" data-cover="蓝色封面"><span class="swatch blue"></span>蓝色</button>
+          <button type="button" data-cover="白色封面"><span class="swatch white"></span>白色</button>
+          <button type="button" data-cover="红色封面"><span class="swatch red"></span>红色</button>
+          <button type="button" data-cover="黑色封面"><span class="swatch black"></span>黑色</button>
+          <button type="button" data-cover="有人物剪影"><span class="swatch silhouette"></span>人物剪影</button>
+          <button type="button" data-cover="古风题字"><span class="swatch type"></span>古风题字</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="detail-dialog" id="detailDialog">
+      <div id="detailContent"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./config.js?v=3"></script>
+    <script src="./app.js?v=4" defer></script>
+  </body>
+</html>
